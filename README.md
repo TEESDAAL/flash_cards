@@ -3,8 +3,8 @@ A small flashcard program written in python
 
 ## Running:
 #### Clone or download the repository:
-`git clone https://github.com/TEESDAAL/flash_cards`
+```git clone https://github.com/TEESDAAL/flash_cards```
 #### Then cd into the flashcards directory:
-`cd flashcards`
+```cd flashcards```
 ### Then run the program with:
-`python flashcards.py aiml232`
+```python flashcards.py aiml232```
