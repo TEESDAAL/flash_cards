@@ -19,7 +19,7 @@ flashcards = {
         ("What is the gradient of a linear function", "Just some constant :)"),
         ("Given f(x) x^Tw, where x and w are both vectors, what is ∇_x f?", "∇_x f = w"),
         ("What is the assumed model for linear regression", "Y = X ⋅ w_true + e_noise"),
-        ("How do we calculate an approximation for the true weights for linear model?","W_hat = (inverse(X^TX) X^T) Y), or the pseudo_inverse(X) Y"),
+        ("How do we calculate an approximation for the true weights for linear model?","Ŵ = (inverse(X^TX) X^T) Y), or the pseudo_inverse(X) Y"),
         ("In reality, we don't use the true pseudo_inverse when calculating the weights, we add a small regularising term W = inverse(λ1 + X^TX) X^T. Why?", "1. (X^TX) might not be invertible. Adding 𝜆1 ensures (X^TX + 𝜆1) is invertible. \n 2. The term 𝜆1 acts as a regularization term. It penalizes large weights, helping prevent overfitting."),
     ],
 
@@ -83,7 +83,7 @@ What is the P(A, B)?""", "0"),
         ("What are the two ways to express independence between X and Y?", "1. P(X,Y) = P(X)*P(Y)\n2.P(X|Y) = P(X)"),
         ("If X and Y are independent given Z what does P(X | Y, Z) equal?", "P(Y|Z)"),
         ("If P(cat) = 0.08, P(dog) = 0.02, P(cow) = 0.9 What is the chance that I see a data set, D = (cow, cow, dog)? (Note the slides make the assumption that these events are independent.", "If the sightings are independent:\nP(D) = P(cow, cow, dog)\n = P(cow)P(cow)P(dog)\n = 0.9*0.9*0.2=0.162"),
-        ("How do we calculate the Maximum likelihood estimators for the probabilities of a catgorical distribution?", "Our estimator of P(X=x_i), P_hat(X=x_i) = count(x_i)/N, where count(x_i) gives the number of times a value occurs in the dataset, and N is the size of the dataset."),
+        ("How do we calculate the Maximum likelihood estimators for the probabilities of a catgorical distribution?", "Our estimator of P(X=x_i), P̂(X=x_i) = count(x_i)/N, where count(x_i) gives the number of times a value occurs in the dataset, and N is the size of the dataset."),
         ("Why would we not want to directly use the counts of all the classes? If not why and provide an example?", "If the number of entries is small we run into problems with overfitting, consider if we have only seen 1 datapoint, then we have one catagory with 100% probability and everything else has 0%. (To solve this we add 1 to all the counts, called laplace smoothing)"),
         ("What is the formula for entropy?", "H(X) = ∑_i P(X=x_i)log_2(1/P(X=x_i))"),
         ("What does an entropy H(X)=0 actually mean?", "H(X)=0, means that there is no uncertainty, that is all of the data falls under 1 catagory."),
@@ -117,6 +117,30 @@ We can see independence dramatically simplifies the factorisation.
         ("How does P(A, B, C) factorise if the graph motif is a branch (B and C are conditionally independent, given A)", "P(A, B, C) = P(A)P(B|A)P(C|A)"),
         ("How does P(A, B, C) factorise if the graph motif is a collider (A and B are already independent, but they become dependent, once you observe C.)",
          "P(A, B, C) = P(A)P(B)P(C|A,B)"),
+    ],
+
+    "Gaussians": [
+        ("How do you find the mean of a dataset?", "The average of a dataset X (which is a matrix) is given be the vector which has entries μ_i =  1/n ∑_jX_i,j\n Or in python μ⃗ = [sum(row)/len(row) for row in X]"),
+        ("How do you find the covariance of a dataset?", "Cov = 1/n∑_i (X_i - μ)(X_i - μ)^T = "),
+        ("What does it mean to standardize a dataset?", "Standardization is centering and then scaling the individual feature variances to be 1. Standardised data will have 𝜇⃗ = 0⃗ and the diagonals of Covariance Matrix=1."),
+        ("Briefly describe the central limit theorem", "Sums of independent random variables from almost any distribution approach a Normal distribution"),
+        ("What is the notation for the standard normal distribution", "N(0,1) = 1/sqrt(2pi)e^(-x^2/2)"),
+        ("What is the formula for the parameterized normal distribution?", "N(x; 𝜇, 𝜎^2) = (1/(𝜎sqrt(2pi)))e^(-(x - 𝜇)^2/(2𝜎^2))"),
+        ("Why is learning the weights of a linear regression model an inference problem.", "We can consider the problem to be us trying to infer the most likely weights given the Y's and X's. That is find the best W for P(W|X,Y)"),
+        ("What is the main advantage of using the inference to calculate the weights instead of pseudo inverse method.", "Using inference we get error bars on our predictions, 𝜎^2_pred = 𝜎^2_noise + x^T Σ̂_map x"),
+        ("How do we solve the inverse problem for linear regression using the inference problem. That is if we know the wieghts W and the outputs Y, how do we find the X's?", "Since Y=XW is \"symmetric\" finding X uses the same process as finding W's"),
+        ("Briefly describe the EM process in the context of infering the X's and W's given the Y's",
+"""
+The EM process is an iterative process:
+0. Start by making an intiall guess of all the weights, W', then repeat steps 1 and 2
+1. (E step) Treat W' as the true value of the weights and then use them to calculate the most likely set of inputs X'
+2. (M step) Treat X' as the true inputs and then use them to calculate the most likely set of weights W'
+
+-  This allows us to do a kind of dimensionality reduction:
+   -  From high-dim data (Y), finds the best linear, low-dim embedding (X):
+- Also handles missing values correctly :)
+"""),
+
 
     ]
 
