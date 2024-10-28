@@ -73,8 +73,8 @@ What is the P(A) + P(B)?""", "1"),
   B │ 1 │  4 │  2  │
     └───┴────┴─────┘
 What is the P(A, B)?""", "0"),
-        ("Insert brackets into the following equation in a way that doesn't change the order of operations: P(X, Y | Z)","P((X, Y) | Z)"),
-        ("Insert brackets into the following equation in a way that doesn't change the order of operations: P(X | Y, Z)","P(X | (Y, Z))"),
+        ("Insert brackets into the following equation in a way that doesn't change the order of operations: P(X, Y | Z)", "P((X, Y) | Z)"),
+        ("Insert brackets into the following equation in a way that doesn't change the order of operations: P(X | Y, Z)", "P(X | (Y, Z))"),
         ("Write the product rule for probabilities", "P(X) P(Y|X) = P(X,Y)"),
         ("How to find the probability of P(A|B) given P(A, B), P(B), P(A)", "P(A|B)=P(A, B)/P(B)"),
         ("Find P(Y|X) from P(X) and P(X,Y)", "P(Y|X) = P(X,Y)/P(X)"),
@@ -87,7 +87,37 @@ What is the P(A, B)?""", "0"),
         ("Why would we not want to directly use the counts of all the classes? If not why and provide an example?", "If the number of entries is small we run into problems with overfitting, consider if we have only seen 1 datapoint, then we have one catagory with 100% probability and everything else has 0%. (To solve this we add 1 to all the counts, called laplace smoothing)"),
         ("What is the formula for entropy?", "H(X) = ∑_i P(X=x_i)log_2(1/P(X=x_i))"),
         ("What does an entropy H(X)=0 actually mean?", "H(X)=0, means that there is no uncertainty, that is all of the data falls under 1 catagory."),
-        ("Under what circumstance do we maximise probabilites?", "It means the probabilities are split evenly between the catagories, fun fact this would leave an entropy of log_2(n) where n is the number of catagories.")
+        ("Under what circumstance do we maximise probabilities?", "It means the probabilities are split evenly between the catagories, fun fact this would leave an entropy of log_2(n) where n is the number of catagories.")
     ],
+    "Inference and Networks": [
+        ("What does it mean to factorize P(X, Y)", "The product rule factorises the joint P(X, Y) into P(X)P(Y|X)."),
+        ("What does Bayes rule allow us to do?", "It allows us to infer “backwards”, from effects to cause. Or more abstractly it allows us to find P(B|A) in terms of P(A|B)"),
+        ("What is the formula of Bayes rule?", "P(hypothesis ∣ data) = (P(hypothesis) × P(data ∣ hypothesis))/P(data)"),
+        ("How do you calculate the Bayes Factor between two hypotheses, H_1, H_2 for some given data D", "The bayes factor is given by: (P(H_1)/P(H_2)) × (P(D|H_1)/P(D|H_2))"),
+        ("Calculate P(dog | meow), given that P(dog) = 4/5, P(meow | dog) = 1/10, P(meow | cat) = 19/20.", """
+P(dog | meow)/P(cat ∣ meow) = (P(dog)/P(cat)) × (P(meow ∣ dog)/P(meow ∣ cat))
+    = ((4/5)/(1/5)) × ((1/10)/(19/20))
+    = 4 × (2/19)
+    = 8/19
+
+=> P(dog | meow) = 8/(19+8)
+    = 8/27
+    ≈ 0.2962
+"""),
+        ("How does P(X, Y, Z) “factorise”", "P(X)P(Y|X)P(Z|X,Y)"),
+        ("Compare how P(X, Y, Z) factorise if X, Y, Z are indepenent and not", """
+Not independent:
+P(X, Y, Z) = P(X)P(Y|X)P(Z|X,Y)
+Independent:
+P(X, Y, Z) = P(X)P(Y)P(Z)
+
+We can see independence dramatically simplifies the factorisation.
+"""),
+        ("How does P(A, B, C) factorise if the graph motif is a chain (A and C are conditionally independent, given B)", "P(A, B, C) = P(A)P(B|A)P(C|B)"),
+        ("How does P(A, B, C) factorise if the graph motif is a branch (B and C are conditionally independent, given A)", "P(A, B, C) = P(A)P(B|A)P(C|A)"),
+        ("How does P(A, B, C) factorise if the graph motif is a collider (A and B are already independent, but they become dependent, once you observe C.)",
+         "P(A, B, C) = P(A)P(B)P(C|A,B)"),
+
+    ]
 
 }
