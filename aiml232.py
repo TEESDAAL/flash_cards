@@ -104,7 +104,7 @@ P(dog | meow)/P(cat ∣ meow) = (P(dog)/P(cat)) × (P(meow ∣ dog)/P(meow ∣ c
     = 8/27
     ≈ 0.2962
 """),
-        ("How does P(X, Y, Z) “factorise”", "P(X)P(Y|X)P(Z|X,Y)"),
+        ("How does P(X, Y, Z) “factorise”", "P(X, Y, Z) = P(X)P(Y|X)P(Z|X,Y)"),
         ("Compare how P(X, Y, Z) factorise if X, Y, Z are indepenent and not", """
 Not independent:
 P(X, Y, Z) = P(X)P(Y|X)P(Z|X,Y)
