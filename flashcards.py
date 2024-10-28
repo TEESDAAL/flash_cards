@@ -1,10 +1,8 @@
 import sys
 from random import shuffle
 
-type Catagory = str
 
-
-def select_mode(flashcards: dict[Catagory, list[tuple[str, str]]]):
+def select_mode(flashcards):
     print("What catagory do you want to study? (Default is to practice all of them)")
     print('"": All questions.')
     print(*[f"{i}: {catagory}" for i, catagory in enumerate(flashcards.keys(), start=1)], sep="\n")
@@ -22,7 +20,7 @@ def select_mode(flashcards: dict[Catagory, list[tuple[str, str]]]):
     return ask_questions({str(i+1): questions for i, questions in enumerate(flashcards.values())}[catagory])
 
 
-def ask_questions(questions: list[tuple[str, str]]):
+def ask_questions(questions):
     shuffle(questions)
     for i, (question, answer) in enumerate(questions, start=1):
         input(f"{i}/{len(questions)}: {question}\n")

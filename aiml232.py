@@ -1,6 +1,4 @@
-type Catagory = str
-
-flashcards: dict[Catagory, list[tuple[str, str]]] = {
+flashcards = {
     "Vectors, matrices, spaces": [
         ("How do we take the dot product of two vectors (v•w)?", "We multiply them element wise v•w=Σv_iw_i ([1,2]•[3,4] = 1*3+2*4 = 11)"),
         ("What is a vector?", "A collection of numbers, can represent a point in space or a direction"),
@@ -84,7 +82,7 @@ What is the P(A, B)?""", "0"),
         ("Given the Joint distribution of X,Y,Z. How do you find P(X=x| Y=y)?", "P(X=x|Y=y) = P(X=x,Y=y)/P(Y=y)\n = (∑_i P(X=x, Y=y, Z=z_i)/∑_i∑_jP(X=x_i, Y=y, Z=z_i)"),
         ("What are the two ways to express independence between X and Y?", "1. P(X,Y) = P(X)*P(Y)\n2.P(X|Y) = P(X)"),
         ("If X and Y are independent given Z what does P(X | Y, Z) equal?", "P(Y|Z)"),
-         ("If P(cat) = 0.08, P(dog) = 0.02, P(cow) = 0.9 What is the chance that I see a data set, D = (cow, cow, dog)? (Note the slides make the assumption that these events are independent.", "If the sightings are independent:\nP(D) = P(cow, cow, dog)\n = P(cow)P(cow)P(dog)\n = 0.9*0.9*0.2=0.162"),
+        ("If P(cat) = 0.08, P(dog) = 0.02, P(cow) = 0.9 What is the chance that I see a data set, D = (cow, cow, dog)? (Note the slides make the assumption that these events are independent.", "If the sightings are independent:\nP(D) = P(cow, cow, dog)\n = P(cow)P(cow)P(dog)\n = 0.9*0.9*0.2=0.162"),
         ("How do we calculate the Maximum likelihood estimators for the probabilities of a catgorical distribution?", "Our estimator of P(X=x_i), P_hat(X=x_i) = count(x_i)/N, where count(x_i) gives the number of times a value occurs in the dataset, and N is the size of the dataset."),
         ("Why would we not want to directly use the counts of all the classes? If not why and provide an example?", "If the number of entries is small we run into problems with overfitting, consider if we have only seen 1 datapoint, then we have one catagory with 100% probability and everything else has 0%. (To solve this we add 1 to all the counts, called laplace smoothing)"),
         ("What is the formula for entropy?", "H(X) = ∑_i P(X=x_i)log_2(1/P(X=x_i))"),
