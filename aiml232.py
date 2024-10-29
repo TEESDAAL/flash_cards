@@ -169,6 +169,13 @@ The 4 parts of the state transition system (Σ)
         ("Describe forward state-space search.", "A forward state-space search is a search that starts from an intial-state and then searches till it finds the goal state."),
         ("Describe backwards state-space search.", "A backwards state-space search is a search that starts from the goal state and then searches till it finds the initial state."),
         ("What is the challenge with using traditional planning, for reinforcement learning?", "It is often too expensive, especially given that the initial state may not be known in advance"),
+    ],
+    "Reinforcement Learning": [
+        ("What is the Agent in reinforcement learning?", "The agent is the learner and decision maker in this model."),
+        ("What is the Environment in reinforcement learning?", "The environment is everything outside the agent. It's what the agent interacts with, and provides all the  all the possible states of the agent within the environment and all the actions the agent can take in the environment."),
+        ("What is the reward in reinforcement learning?", "The  numerical values that the agent seeks to maximise over time through its action selection"),
+        ("What is the difference between deterministic and stochastic state transitions?", "Stochastic state transitions are probabilistic, instead of outputing a single state from a given action (like a deterministic solution would), a probability distribution over the possible states is outputed."),
+        ("Briefly describe the Markov Decision Process.", "A Markov decision process is stochastic where the state transition function is doesn't depend on the time.")
     ]
 
 }
