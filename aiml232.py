@@ -140,8 +140,35 @@ The EM process is an iterative process:
    -  From high-dim data (Y), finds the best linear, low-dim embedding (X):
 - Also handles missing values correctly :)
 """),
-
-
+    ],
+    "Planning": [
+        ("What is a plan?", "A plan is a sequence of actions to achieve the goal state from the initial state"),
+        ("What is 4 parts of a state transition system?", """
+The 4 parts of the state transition system (Σ)
+ - S = {s_1, ..., s_n}  is a finite set of states
+ - A = {a_1, ..., s_n} is a finite set of actions
+ - E = {e_1, ..., e_n} is a finite set of events
+ - 𝜎: 𝑆×𝐴×𝐸 → 2^s is a state-transition function
+"""),
+        ("What is the difference between actions and events?", "Actions are controlled, say we may choose to bring an umbrella. Whereas, events are \"contingent\" that is uncontrolled - e.g. it may rain"),
+        ("What are the assumptions in classical planning?", """
+1. Deterministic
+2. Static
+3. Finite
+4. Fully observable
+5. Restricted goals
+6. Implicit time
+"""),
+        ("What does it mean for the plan to be Deterministic?", "The state transition is a true function, that is 𝜎: S×A → S: each state and action leads to a single other state"),
+        ("What does it mean for the state transition system (Σ) to be static", "There are no events, the system only responds to our actions - Σ = (S, A, 𝜎) != (S, A, 𝜎, E)"),
+        ("What does it mean for our model to be finite?", "Both the set of states and actions are finite."),
+        ("What does it mean state transition system (Σ) to be fully observable?", "We know everything about Σ, for example there are no hidden states."),
+        ("What does it mean for the system to have Restricted goals?", "There are some number specified of goal states."),
+        ("What does it mean for the system to have \"Implicit time\"", "Actions have no duration, instantaneous state transition"),
+        ("How to find a plan in the state space?", "We invision the state-space as a graph (where the states are the nodes, and actions are the links between nodes), To find a plan we can then use a search algorithm through this space and the resulting \"path\" is our plan"),
+        ("Describe forward state-space search.", "A forward state-space search is a search that starts from an intial-state and then searches till it finds the goal state."),
+        ("Describe backwards state-space search.", "A backwards state-space search is a search that starts from the goal state and then searches till it finds the initial state."),
+        ("What is the challenge with using traditional planning, for reinforcement learning?", "It is often too expensive, especially given that the initial state may not be known in advance"),
     ]
 
 }
